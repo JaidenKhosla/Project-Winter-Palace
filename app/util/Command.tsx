@@ -1,8 +1,15 @@
-export default function Command({ command, text }: { command: string, text: string })
+"use client"
+
+import { usePathname } from "next/navigation"
+
+export default function Command({  text }: { text: string })
 {
+
+    const path = usePathname().toUpperCase();
+
     return (
-        <div className="flex gap-x-1.5">
-            <p className="text-2xl">{command}</p>
+        <div className="flex gap-x-1.5 h-8">
+            <p className="text-2xl">{`PS C://THS_WEBSITE/${path.substring(1)||"HOME"} > `}</p>
             <p className="text-2xl typewriter">{text}</p>
         </div>
     )

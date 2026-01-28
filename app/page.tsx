@@ -9,7 +9,8 @@ export default function Home() {
         <p>THS CMD</p>
         <p>Copyright THS Corp. All rights reserved</p>
       </div>
-      <Command command="ls " text="argssfkalfas;"/>
+      <br/>
+      <Command text="cat home.txt"/>
     </div>
   )
 }

@@ -16,32 +16,22 @@
 @keyframes blink {
   0% { border-right: 1px solid white; }
   
-  10% { border-right: none;}
+  20% { border-right: none;}
   
-  20% { border-right: 1px solid white; }
-  
-  30% { border-right: none;}
-
   40% { border-right: 1px solid white; }
-
-  50% { border-right: none;}
-
-  60% { border-right: 1px solid white; }
-
-  70% { border-right: none;}
+  
+  60% { border-right: none;}
 
   80% { border-right: 1px solid white; }
 
-  90% { border-right: none;}
-
-  100% { border-right: 1px solid white; }
+  100% { border-right: none;}
 }
 
 @layer components
 {
   .typewriter {
     overflow: hidden;
-    animation: typewriter 5s, blink 5s;
+    animation: typewriter 2s, blink 2s;
   }
 }
 
