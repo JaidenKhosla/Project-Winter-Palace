@@ -4,6 +4,7 @@
   --color-background: #232222;
   --color-header: #414141;
   --color-hover: #353535;
+  --color-shdn: #5A5959;
   --animate-typewriter: typewriter 3s ease-in-out infinite;
   
 }
@@ -27,11 +28,33 @@
   100% { border-right: none;}
 }
 
+@keyframes rise {
+  0% {
+    opacity: 0;
+    top: 25px;
+  }
+
+  100% {
+    opacity: 1;
+    top: 0;
+  }
+}
+
 @layer components
 {
   .typewriter {
     overflow: hidden;
-    animation: typewriter 2s, blink 2s;
+    animation: typewriter 2s forwards, blink 1s 1 0s forwards;
+  }
+
+  .fade-in {
+    position: relative;
+    animation: rise 2s ease-in forwards;
+    /* color: red; */
+  }
+
+  .fade-init {
+    opacity: 0;
   }
 }
 

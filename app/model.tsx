@@ -36,7 +36,7 @@ export default function Model()
     return (
         <div className="w-screen">
             <Canvas className="w-full h-full" gl={{ antialias: true}}>
-                {/* <AsciiRenderer characters="█▓▒░" color={true} resolution={0.55} bgColor="transparent"/> */}
+                {/* <AsciiRenderer citharacters="█▓▒░" color={true} resolution={0.55} bgColor="transparent"/> */}
                 <hemisphereLight intensity={0.75}/>
                 {/* <ambientLight color={[255,0,0]}/> */}
                 {/* <pointLight position={[10, 10, 10]} /> */}
