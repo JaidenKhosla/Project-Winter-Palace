@@ -6,6 +6,7 @@ import React, { useRef, useState } from 'react'
 import { Canvas, useFrame, ThreeElements } from '@react-three/fiber'
 import { Center, useGLTF } from '@react-three/drei'
 import { AsciiRenderer, OrbitControls } from "@react-three/drei";
+import { EffectComposer, Pixelation } from "@react-three/postprocessing";
 
 
 function Logo(props: ThreeElements['group']) {
@@ -20,7 +21,7 @@ function Logo(props: ThreeElements['group']) {
 
     return (
         <Center>
-            <OrbitControls zoomSpeed={0} enableDamping={true} rotateSpeed={SPEED} onEnd={()=>{
+            <OrbitControls enableZoom={false} enableDamping={true} rotateSpeed={SPEED} onEnd={()=>{
 
             }}/>
             <group scale={1.5} ref={model_ref} {...props}>
@@ -34,14 +35,8 @@ export default function Model()
 {
 
     return (
-        <div className="size-150">
-            <Canvas className="w-full h-full" gl={{ antialias: true}}>
-                {/* <AsciiRenderer citharacters="█▓▒░" color={true} resolution={0.55} bgColor="transparent"/> */}
-                <hemisphereLight intensity={0.75}/>
-                {/* <ambientLight color={[255,0,0]}/> */}
-                {/* <pointLight position={[10, 10, 10]} /> */}
-                <Logo position={[0, 10, -0.5]}/>
-            </Canvas>
+        <div className="size-150 touch-auto">
+            
         </div>
     )
 }

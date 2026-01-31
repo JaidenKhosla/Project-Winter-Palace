@@ -10,6 +10,9 @@ import ShadeButton from "@/app/util/ShadeButton";
 import Project from "@/app/util/Project";
 import Question from "@/app/util/Question";
 import Model from "@/app/util/Model";
+import { redirect } from "next/navigation";
+
+import clsx from "clsx";
 
 export default function Home() {
 
@@ -17,7 +20,10 @@ export default function Home() {
   const [ useShade, setShade ] = useState<boolean>(false);
 
   return (
-    <main className="ml-5 mt-5">
+    <main className={clsx("ml-5 mt-5",
+      !commandFinished["start"] && "h-screen"
+
+    )}>
       <div className="text-2xl">
         <p>THS CMD</p>
         <p>Copyright THS Club. All rights reserved</p>
@@ -31,13 +37,13 @@ export default function Home() {
       }}/>
 
      {commandFinished["start"] && 
-     <Scroll className="flex justify-between items-center">
-        <div className="w-[50%]">
+     <Scroll className="flex items-start">
+        <div className="w-[60%]">
           <h1 className="mt-15 text-6xl shadow_class">Creating the next generations of coders!</h1> 
           <p className="ml-3 text-2xl mt-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labor</p>
           <div className="flex gap-5 mt-10" onMouseLeave={()=>setShade(false)}>
-            <ShadeButton shade={!useShade} onMouseEnter={()=>setShade(true)}>CSHS</ShadeButton>
-            <ShadeButton shade={useShade} onMouseEnter={()=>setShade(false)}>Gallery</ShadeButton>
+            <ShadeButton shade={!useShade} onMouseEnter={()=>setShade(true)} onClick={()=> redirect("/cshs")}>CSHS</ShadeButton>
+            <ShadeButton shade={useShade} onMouseEnter={()=>setShade(false)} onClick={()=> redirect("/gallery")}>Gallery</ShadeButton>
           </div>
         </div>
         <Model/>
@@ -110,7 +116,7 @@ export default function Home() {
             
             {
               commandFinished["faq"] && (
-                <Scroll className="flex flex-wrap gap-x-5 gap-y-5 pt-5">
+                <Scroll className="flex flex-wrap gap-x-5 gap-y-5 pt-5 w-[70%]">
                   <Question question="Are there fees for the Computer Science Club?" answer="No :3"/>
                   <Question question="Are there fees for the Computer Science Club?" answer="No :3"/>
                   <Question question="Are there fees for the Computer Science Club?" answer="No :3"/>
