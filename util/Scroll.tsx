@@ -1,3 +1,5 @@
+"use client"
+
 import React, { ReactElement, useEffect, useRef } from "react";
 
 interface ScrollProps extends React.HTMLProps<HTMLDivElement>
@@ -17,9 +19,10 @@ export default function Scroll({ children, ...props }: ScrollProps)
 
         const observer = new IntersectionObserver((items)=>{
             items.forEach((item)=>{
+                if(item.isIntersecting)
                 item.target.classList.add("fade-in");
             })
-        }, { threshold: 0.8});
+        }, { threshold: 0.25});
 
         observer.observe(divElement.current!);
     }, []);

@@ -1,15 +1,15 @@
 "use client"
 
 import Image from "next/image";
-import Command from "@/app/util/Command";
-import Scroll from "@/app/util/Scroll";
-import FeatureBox from "@/app/util/FeatureBox";
+import Command from "@/util/Home/Command";
+import Scroll from "@/util/Scroll";
+import FeatureBox from "@/util/Home/FeatureBox";
 
 import { useState } from "react";
-import ShadeButton from "@/app/util/ShadeButton";
-import Project from "@/app/util/Project";
-import Question from "@/app/util/Question";
-import Model from "@/app/util/Model";
+import ShadeButton from "@/util/ShadeButton";
+import Project from "@/util/Project";
+import Question from "@/util/Home/Question";
+import Model from "@/util/Home/Model";
 import { redirect } from "next/navigation";
 
 import clsx from "clsx";
@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
     <main className={clsx("ml-5 mt-5",
-      !commandFinished["start"] && "h-screen"
+      !commandFinished["start"] && "h-[500vh]"
 
     )}>
       <div className="text-2xl">
@@ -37,8 +37,8 @@ export default function Home() {
       }}/>
 
      {commandFinished["start"] && 
-     <Scroll className="flex items-start">
-        <div className="w-[60%]">
+     <Scroll className="flex items-center justify-between">
+        <div className="w-[50%]">
           <h1 className="mt-15 text-6xl shadow_class">Creating the next generations of coders!</h1> 
           <p className="ml-3 text-2xl mt-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labor</p>
           <div className="flex gap-5 mt-10" onMouseLeave={()=>setShade(false)}>

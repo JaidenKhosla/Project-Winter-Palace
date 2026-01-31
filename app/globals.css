@@ -1,11 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #232222;
-  --color-header: #414141;
+  --color-background: #131313;
+  --color-header: #202020;
   --color-hover: #353535;
   --color-shdn: #5A5959;
-  --color-footer: #525151;
   --animate-typewriter: typewriter 3s ease-in-out infinite;
   
 }
@@ -50,7 +49,7 @@
 
   .fade-in {
     position: relative;
-    animation: rise 2s ease-in forwards;
+    animation: rise 1s ease-out forwards;
     /* color: red; */
   }
 
@@ -67,7 +66,7 @@
 @layer base
 {
     :root, html {
-      font-size: 85px;
+      font-size: 20px;
       color: white;
     }
     
@@ -77,6 +76,11 @@
       }
     }
 
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
     
 
 }

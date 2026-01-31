@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import localfont from "next/font/local";
 import "./globals.css";
-import Navbar from "@/app/layout/Navbar";
-import Footer from "@/app/layout/Footer";
+import Navbar from "@/layout/Navbar";
+import Footer from "@/layout/Footer";
 
 
 const scientifica = localfont({
@@ -41,7 +41,9 @@ export default function RootLayout({
         className={`${scientifica.className} bg-background antialiased`}
       >
         <Navbar/>
-        {children}
+        <main className="min-h-screen">
+          {children}
+        </main>
         <Footer/>
       </body>
     </html>
