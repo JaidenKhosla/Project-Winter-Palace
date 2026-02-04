@@ -1,23 +1,24 @@
-import Image from "next/image";
+import { ForwardRefExoticComponent, RefAttributes } from "react";
+import { BoxIconProps } from "@boxicons/react";
 import Link from "next/link";
 
-
+type IconType = ForwardRefExoticComponent<BoxIconProps & RefAttributes<SVGSVGElement>>;
 interface FeatureBoxProps
 {
     title: string,
     description: string,
-    image_path: string
+    icon: IconType
 }
 
-export default function FeatureBox({ title, description, image_path}: FeatureBoxProps)
+export default function FeatureBox({ title, description, icon: Icon}: FeatureBoxProps)
 {
     return (
-        <Link href={`/${description}`}>
+        <Link href={`/${title.toLowerCase()}`}>
         
             <div className="group border border-white flex flex-col items-start max-md:items-center max-md:text-center max-md:justify-center p-3 size-75 max-md:size-90 text-left">
                 
-                <div className="border border-white size-25 max-md:size-40">
-                    e
+                <div className="border border-white size-25 max-md:size-40 flex items-center justify-center">
+                    <Icon size="3xl" pack="filled"/>
                 </div>
                 <h3 className="font-bold text-4xl max-md:text-5xl">{title}</h3>
                 <p className="text-wrap max-md:text-lg">{description}</p>

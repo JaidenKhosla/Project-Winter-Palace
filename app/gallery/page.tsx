@@ -20,7 +20,7 @@ export default function Gallery()
     return (
         <Scroll className="flex flex-col justify-center items-center mt-10">
             <h1 className="text-6xl shadow_class mb-10">Gallery</h1>
-            <div className="border border-white flex justify-between h-100 w-200">
+            <div className="border border-white flex justify-between h-100 w-200 max-md:w-[95%] max-md:h-200">
                 <div className="size-full border-r">
                     <div className="border-b p-3"/>
                     {

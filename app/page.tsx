@@ -1,9 +1,10 @@
 "use client"
 
-import Image from "next/image";
 import Command from "@/util/Home/Command";
 import Scroll from "@/util/Scroll";
 import FeatureBox from "@/util/Home/FeatureBox";
+
+import { Medal } from "@boxicons/react";
 
 import { useState } from "react";
 import ShadeButton from "@/util/ShadeButton";
@@ -61,13 +62,13 @@ export default function Home() {
             commandFinished["pleasejoin"] && (
               <Scroll>
                 <div className="text-center flex flex-col items-center mt-10 gap-3">
-                    <h2 className="shadow_class text-white text-8xl">You Belong Here</h2>
+                    <h2 className="shadow_class text-white text-7xl">You Belong Here</h2>
                     <p className="text-3xl w-[45%] max-md:w-full">THS Computer Science Club is devoted to furthering students' interest and skill in CS beyond typical school curriculum</p>
 
                     <div className="flex gap-x-10 mt-10 flex-wrap max-md:flex-col gap-y-5">
-                      <FeatureBox title="Competitions" description="There's no complication in the words that you say in the day. What am I saying blah blah blah." image_path="dkfajsdf;lsk"/>
-                      <FeatureBox title="Competitions" description="There's no complication in the words that you say in the day. What am I saying blah blah blah." image_path="dkfajsdf;lsk"/>
-                      <FeatureBox title="Competitions" description="There's no complication in the words that you say in the day. What am I saying blah blah blah." image_path="dkfajsdf;lsk"/>
+                      <FeatureBox title="Competitions" description="There's no complication in the words that you say in the day. What am I saying blah blah blah." icon={Medal}/>
+                      <FeatureBox title="Competitions" description="There's no complication in the words that you say in the day. What am I saying blah blah blah." icon={Medal}/>
+                      <FeatureBox title="Competitions" description="There's no complication in the words that you say in the day. What am I saying blah blah blah." icon={Medal}/>
                     </div>
                 </div>  
               </Scroll>
