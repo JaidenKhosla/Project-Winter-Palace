@@ -33,7 +33,7 @@ function Logo(props: ThreeElements['group']) {
         //   color: "#FFFFFF"
         });
     
-        const dpRatio = window.devicePixelRatio;
+        const dpRatio = Math.min(2,window.devicePixelRatio);
 
         const cellSize = Math.min(1, Math.floor(1/dpRatio), Math.floor(1*dpRatio));
 

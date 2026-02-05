@@ -43,7 +43,7 @@ export default function Home() {
           <h1 className="text-6xl max-md:text-center shadow_class">Creating the next generations of coders!</h1> 
           <p className="ml-3 max-md:text-center text-2xl mt-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labor</p>
           <div className="flex gap-5 mt-10 max-md:justify-center max-md:pb-20" onMouseLeave={()=>setShade(false)}>
-            <ShadeButton shade={!useShade} onMouseEnter={()=>setShade(true)} onClick={()=> redirect("/cshs")}>CSHS</ShadeButton>
+            <ShadeButton shade={!useShade} onMouseEnter={()=>setShade(true)} onClick={()=> redirect("/projects")}>Projects</ShadeButton>
             <ShadeButton shade={useShade} onMouseEnter={()=>setShade(false)} onClick={()=> redirect("/gallery")}>Gallery</ShadeButton>
           </div>
         </div>
