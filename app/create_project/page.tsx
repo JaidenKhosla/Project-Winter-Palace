@@ -7,6 +7,7 @@ import { uploadProject } from "@/actions/Actions";
 import ShadeButton from "@/util/ShadeButton";
 import { isValidURL } from "@/actions/ClientActions";
 import Image from "next/image";
+import Scroll from "@/util/Scroll";
 
 type Project = Omit<ProjectProps, "imageLink">;
 
@@ -25,7 +26,7 @@ export default function CreateProject()
     const [ useRes, setRes] = useState<string>("");
 
     return (
-        <div>
+        <Scroll>
 
             <form className="flex flex-col gap-3 p-3 w-150">
                 <StyledInput id="title" value={useForm?.name} onChange={(event)=>setForm({...useForm, name: (event.target as HTMLInputElement).value })}/>
@@ -64,7 +65,7 @@ export default function CreateProject()
                 {useRes && <p className="text-2xl text-red-400 italic">{useRes}</p>}
             </form>
 
-        </div>
+        </Scroll>
     )
 
 }
