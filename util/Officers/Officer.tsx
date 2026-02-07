@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link";
 
-import {Instagram, Github, Discord, Disc} from "@boxicons/react";
+import {Instagram, Github, Discord} from "@boxicons/react";
 import { BoxIconProps } from "@boxicons/react";
 
 import { ForwardRefExoticComponent, RefAttributes } from "react";

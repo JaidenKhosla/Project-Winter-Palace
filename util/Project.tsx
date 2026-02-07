@@ -13,6 +13,8 @@ export interface ProjectProps
 
 export default function Project({ project } : { project: ProjectProps })
 {
+
+
     return (
         <Link href={project.projectLink} replace={false} target="_blank" rel="noopener noreferrer" className="w-100">
             <div className="group border border-white w-100 h-110 overflow-hidden">

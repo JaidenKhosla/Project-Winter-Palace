@@ -1,16 +1,16 @@
 "use client"
 
 import * as THREE from "three";
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { Canvas, ThreeElements, useFrame, useThree } from '@react-three/fiber'
 import { Center, useGLTF } from '@react-three/drei'
 import {  OrbitControls } from "@react-three/drei";
-import { EffectComposer, RenderPass, EffectPass, ASCIIEffect, ASCIITexture, BlendFunction, BrightnessContrastEffect } from "postprocessing";
+import { EffectComposer, RenderPass, EffectPass, ASCIIEffect, ASCIITexture, BlendFunction } from "postprocessing";
 
 useGLTF.preload("/assets/logo.glb");
 
 function Logo(props: ThreeElements['group']) {
-    const { scene, camera, gl, size} = useThree();
+    const { scene, camera, gl} = useThree();
     
     const composerRef = useRef<EffectComposer|null>(null);
 
@@ -33,14 +33,10 @@ function Logo(props: ThreeElements['group']) {
         //   color: "#FFFFFF"
         });
     
-        const dpRatio = Math.min(2,window.devicePixelRatio);
+        // const dpRatio = Math.min(2,window.devicePixelRatio);
 
-        const cellSize = Math.min(1, Math.floor(1/dpRatio), Math.floor(1*dpRatio));
+        // const cellSize = Math.min(1, Math.floor(1/dpRatio), Math.floor(1*dpRatio));
 
-        composerRef.current.setSize(
-            size.width / cellSize,
-            size.height / cellSize
-        );
 
         
         
@@ -52,7 +48,7 @@ function Logo(props: ThreeElements['group']) {
 
         compos.addPass(asciiPass);
     
-    }, []);
+    }, [camera, gl, scene]);
 
     useFrame(()=>{
         if(composerRef.current)
@@ -63,8 +59,6 @@ function Logo(props: ThreeElements['group']) {
 
     const model_ref = useRef<THREE.Group>(null);
 
-    const [hovered, hover] = useState(false)
-    const [clicked, click] = useState(false);
 
     const SPEED = 1;
 

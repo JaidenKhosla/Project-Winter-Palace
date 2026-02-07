@@ -27,7 +27,7 @@ export default function Competitions()
                             <p className="font-bold underline">The general structure of a programming contest is the following:</p>
                             <ul className="list-disc ml-5">
                                 <li>15-20 Programming problems to solve in 2-3 hours. Problems cover fundamentals, datastructures, algorithms, and overall problem solving.</li>
-                                <li>You will be in teams of up to 3. At least one of your team members must have a device capable of writing and running code. One device per team. Online editors don't count as you won't have an internet connection during the contest period.</li>
+                                <li>{"You will be in teams of up to 3. At least one of your team members must have a device capable of writing and running code. One device per team. Online editors don't count as you won't have an internet connection during the contest period."}</li>
                                 <li>You must have a programming language installed on your machine. Every competition supports Java 8 and up. C++ and Python are supported at a majority of contests. When we send signups, you will be notified on which languages are supported.</li>
                             </ul>
                         </div>

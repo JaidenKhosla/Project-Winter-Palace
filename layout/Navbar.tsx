@@ -8,8 +8,6 @@ import { useEffect, useState } from "react"
 
 import { Menu, X } from "@boxicons/react"
 
-const burgerMenuClassName = "hidden max-md:block";
-
 export default function Navbar()
 {
     const [ useMenu, setMenu ] = useState<boolean>(false);

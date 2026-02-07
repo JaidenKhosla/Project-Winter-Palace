@@ -1,6 +1,6 @@
 "use client"
 
-import React, { ReactElement, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 interface ScrollProps extends React.HTMLProps<HTMLDivElement>
 {
