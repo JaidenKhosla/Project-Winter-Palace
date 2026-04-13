@@ -29,7 +29,7 @@ export default function Projects()
                 <p>Want to show off your own project?</p><Link className="underline transition-all hover:text-shdn" href="/create_project">Click here</Link>
             </div>
 
-            <section className="flex gap-5 flex-wrap justify-center mt-10">
+            <section className="grid grid-cols-3 max-md:grid-cols-1 items-stretch gap-5 flex-wrap mt-10">
                 {useProjects && (useProjects!).map((project, idx) => project.hide || <Project key={`${project.Name}-${idx}`} project={project}/>)}
             </section>
         </Scroll>

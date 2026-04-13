@@ -88,3 +88,8 @@ export async function uploadImage(file: File)
         return photo;
     })
 }
+
+export async function fetchGalleryImages()
+{
+    
+}

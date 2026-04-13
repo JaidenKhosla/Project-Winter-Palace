@@ -5,14 +5,12 @@ import { useEffect, useState } from "react";
 
 import Image from "next/image";
 
-import clsx from "clsx";
-
 import Scroll from "@/util/Scroll";
 
 export default function Gallery()
 {
 
-    const files = ["galleryImages"];
+    // const files = ["galleryImages"];
 
     const [ useFiles, setFiles ] = useState<string[]>([]);
 
@@ -20,9 +18,9 @@ export default function Gallery()
         getChildren("assets/galleryImages").then(arr=>setFiles(arr));
     }, [])
 
-    const [ useFileName, setFileName ] = useState<string>("");
+    // const [ useFileName, setFileName ] = useState<string>("");
 //http://localhost:3000/assets/cat.jpg
-http://localhost:3000/assets/cat.jpg
+// http://localhost:3000/assets/cat.jpg
     return (
         <Scroll className="flex flex-col justify-center items-center mt-10">
             <h1 className="text-6xl shadow_class mb-10">Gallery</h1>
