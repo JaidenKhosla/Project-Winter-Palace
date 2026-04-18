@@ -1,7 +1,7 @@
 "use server"
 
 import { ProjectProps } from "@/util/Project";
-
+import { S3Client, ListObjectsCommand } from "@aws-sdk/client-s3";
 
 export async function getProjects(): Promise<ProjectProps[]>
 {
@@ -89,7 +89,22 @@ export async function uploadImage(file: File)
     })
 }
 
+const s3 = new S3Client({
+    region: "us-east-2",
+});
+
 export async function fetchGalleryImages()
 {
+    const listCommand = new ListObjectsCommand({
+        Bucket: process.env.GALLERY_BUCKET,
+    })
+
+
+    const output = (await s3.send(listCommand))
+    .Contents?.map(
+        content=>`https://${process.env.GALLERY_BUCKET}.s3.us-east-2.amazonaws.com/${content.Key}`
+    );
+
+    return output;
     
 }
