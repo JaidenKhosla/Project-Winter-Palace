@@ -13,7 +13,7 @@ export default function Competitions()
                 </div>
 
                 <div className="text-center flex flex-col items-center">
-                    <Image src="/assets/competitionResources/codewarsImage.png" className="w-100 mt-10" alt="CAT D:" width={300} height={400}/>
+                    <Image placeholder="blur" blurDataURL="/assets/placeholder.webp" unoptimized src="/assets/competitionResources/codewarsImage.png" className="w-100 mt-10" alt="CAT D:" width={300} height={400}/>
                     <p className="text-lg italic text-shdn">Us at HPE CodeWars :D</p>
                 </div>
             </Scroll>
@@ -34,7 +34,7 @@ export default function Competitions()
                     </div>
 
                     <div className="w-100 mr-25 max-md:mr-0">
-                        <Image src="/assets/competitionResources/StackingXorkins.png" width={700} height={800} alt="Xorkins Problem" className="w-full"/>
+                        <Image placeholder="blur" blurDataURL="/assets/placeholder.webp" unoptimized src="/assets/competitionResources/StackingXorkins.png" width={700} height={800} alt="Xorkins Problem" className="w-full"/>
                         <p className="w-100 italic text-shdn">Stacking Xorkins, an extremely difficult problem from the 2025 THS Halloween Competition.</p>
                     </div>
                 </Scroll>
@@ -49,7 +49,7 @@ export default function Competitions()
                     </div>
 
                     <div className="w-100 mr-25">
-                        <Image src="/assets/competitionResources/UIL2007.png" width={700} height={800} alt="Xorkins Problem" className="w-full"/>
+                        <Image placeholder="blur" blurDataURL="/assets/placeholder.webp" unoptimized src="/assets/competitionResources/UIL2007.png" width={700} height={800} alt="Xorkins Problem" className="w-full"/>
                         <p className="w-100 italic text-shdn">Page from UIL Invitational A, 2007</p>
                     </div>
                 </section>

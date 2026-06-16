@@ -34,7 +34,7 @@ export default function CreateProject()
                 <StyledInput id="description" value={useForm?.description} onChange={(event)=>setForm({...useForm, description: (event.target as HTMLInputElement).value})}/>
                 <StyledInput id="project Link" value={useForm?.projectLink} onChange={(event)=>setForm({...useForm, projectLink: (event.target as HTMLInputElement).value})}/>
 
-                {useFile && <Image alt={useForm.Name} src={URL.createObjectURL(useFile)} width={400} height={300}/>}
+                {useFile && <Image placeholder="blur" blurDataURL="/assets/placeholder.webp" unoptimized alt={useForm.Name} src={URL.createObjectURL(useFile)} width={400} height={300}/>}
                 <StyledInput id="Image" type="file" onChange={e=>setFile((e.target as HTMLInputElement).files?.item(0))}/>
 
                 <ShadeButton disabled={useDb} shade={true} changeShadeOnHover onClick={(e)=>{

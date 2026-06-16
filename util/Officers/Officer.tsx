@@ -31,7 +31,7 @@ export default function Officer(props : OfficerProps)
     return (
         <div className="w-90 border border-white">
             <div className={clsx("w-full border-b h-15", props.background || "bg-red-400")}/>
-            <Image src={props.image} alt={`Picture of ${props.name}`} width={300} height={300} className="object-cover rounded-full size-25 border-2 ml-3 object-top border-white relative bottom-10"/>
+            <Image placeholder="blur" blurDataURL="/assets/placeholder.webp" unoptimized src={props.image} alt={`Picture of ${props.name}`} width={300} height={300} className="object-cover rounded-full size-25 border-2 ml-3 object-top border-white relative bottom-10"/>
             <div className="p-3 pt-0 -mt-8">
                 <h2 className="font-bold text-3xl">{props.name}</h2>
                 <p className="text-xl italic">{props.role}</p>
