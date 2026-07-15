@@ -1,0 +1,102 @@
+import { ConditionalCheckFailedException, DynamoDBClient } from "@aws-sdk/client-dynamodb";
+import { DynamoDBDocumentClient, PutCommand, ScanCommand } from "@aws-sdk/lib-dynamodb";
+import { APIGatewayProxyHandler, APIGatewayProxyResult } from "aws-lambda";
+import {z as zod} from "zod";
+
+const CORS_HEADERS = {
+    'Access-Control-Allow-Headers': '*',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': '*'
+}
+
+const insertSchema = zod.object({
+    // "action" : zod.literal(["add", "access"]),
+    "name" : zod.string("Not a valid project name!"),
+    "project_link": zod.url("Not a valid project link!"),
+    "image_link": zod.url("Not a valid image link!"),
+    "author": zod.string("Not a valid author(s) name(s)!"),
+    "description": zod.string("Not a valid description!")
+})
+
+const actionSchema = zod.object({
+    "action": zod.literal(["add", "access"], "Invalid payload action.")
+});
+
+const dynamoDbClient = DynamoDBDocumentClient.from(new DynamoDBClient({region: process.env.AWS_REGION!}));
+const dynamoDbTable = process.env.DYNAMO_DB_TABLE!;
+
+function response(statusCode: number, body: unknown): APIGatewayProxyResult {
+  return {
+    statusCode,
+    headers: CORS_HEADERS,
+    body: JSON.stringify(body),
+  };
+}
+
+async function accessAll()
+{
+    const { Items } = await dynamoDbClient.send(
+        new ScanCommand({ TableName: dynamoDbTable})
+    );
+
+    return response(200,Items?.map(item=>insertSchema.safeParse(item)).filter(item=> item.success).map(item => item.data));
+}
+
+async function addToDatabase(event: any)
+{
+    let databasePayload = insertSchema.safeParse(event);
+
+    if(!databasePayload.success)
+        return response(400,databasePayload.error.flatten().fieldErrors);
+
+    try
+    {
+        let result = await dynamoDbClient.send(
+            new PutCommand({
+                TableName: dynamoDbTable,
+                Item: { ...databasePayload.data},
+                ConditionExpression: "attribute_not_exists(#name)",
+                ExpressionAttributeNames: { "#name" : "name"}
+            })
+        );
+
+        return response(200, "Overall project successfully created!");
+    }
+    catch(err)
+    {
+        if(err instanceof ConditionalCheckFailedException)
+            return response(400, "Project name already exists!");
+        else
+        {
+            console.log(`[ERROR] - ${err}`);
+            return response(500, "Something unexpected happened while handling insertion into database! Please contact the server admin.")
+        }
+    }
+}
+
+export const handler: APIGatewayProxyHandler = async (event, context) => 
+{
+    try
+    {   
+        const body = JSON.parse(event.body ?? "{}");
+
+        console.log(`[${context.logStreamName}] Handling event: ${JSON.stringify(body)}`);
+
+        const payload = actionSchema.safeParse(body);
+
+        if(!payload.success)
+            return response(400, payload.error.flatten().fieldErrors)
+
+        if(payload.data.action == "access")
+            return await accessAll();
+        else if(payload.data.action == "add")
+            return await addToDatabase(body);
+
+    }
+    catch (err)
+    {
+        return response(500, "Something unexpected happened while handling payload! Please contact the server admin.")
+    }
+
+    return response(500, "Oops. Something broke.");
+}
