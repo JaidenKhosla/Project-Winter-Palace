@@ -1,11 +1,18 @@
 {
-  "name": "projectupload",
-  "version": "0.1.0",
-  "private": true,
+  "name": "ProjectUpload",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.13.1",
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.1087.0",
     "@aws-sdk/lib-dynamodb": "^3.1087.0",
-    "@aws-sdk/util-dynamodb": "^3.996.6",
     "@types/aws-lambda": "^8.10.162",
     "zod": "^4.4.3"
   },

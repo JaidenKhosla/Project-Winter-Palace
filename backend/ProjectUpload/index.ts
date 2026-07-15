@@ -2,7 +2,7 @@ import { ConditionalCheckFailedException, DynamoDBClient } from "@aws-sdk/client
 import { DynamoDBDocumentClient, PutCommand, ScanCommand } from "@aws-sdk/lib-dynamodb";
 import { APIGatewayProxyHandler, APIGatewayProxyResult } from "aws-lambda";
 import {z as zod} from "zod";
-
+//CORS_HHEADERS
 const CORS_HEADERS = {
     'Access-Control-Allow-Headers': '*',
     'Access-Control-Allow-Origin': '*',
