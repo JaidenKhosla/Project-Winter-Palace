@@ -74,7 +74,7 @@ async function addToDatabase(event: any)
     }
 }
 
-export const handler: APIGatewayProxyHandler = async (event, context) => 
+export const lambda_function: APIGatewayProxyHandler = async (event, context) => 
 {
     try
     {   
