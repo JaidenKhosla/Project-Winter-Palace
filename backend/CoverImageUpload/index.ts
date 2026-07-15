@@ -60,7 +60,7 @@ async function getUploadUrl(event: any)
     return { status: 200, uploadURL, Key: key};
 }
 
-export const handler: APIGatewayProxyHandler = async (event) => {
+export const lambda_function: APIGatewayProxyHandler = async (event) => {
     try
     {
         const parsedEvent = JSON.parse(event.body ?? "{}");
