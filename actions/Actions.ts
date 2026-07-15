@@ -1,28 +1,40 @@
 "use server"
 
 import { ProjectProps } from "@/util/Project";
+import { S3Client, ListObjectsCommand } from "@aws-sdk/client-s3";
+
 
 export async function getProjects(): Promise<ProjectProps[]>
 {
     return fetch(process.env.MONGO_DB_URL!, {
         method: "POST",
-        body: JSON.stringify({"Action" : "Access"})
+        body: "{\"Action\" : \"Access\"}"
     })
     .then(
         response=>{
-            console.log(process.env.MONO_DB_URL);
+            // console.log(response);
             if(response.ok)
                 return response.json()
         }
     )
     .then(
         json => {
-            const projects = JSON.parse(json).body;
-            return projects;
+            
+            // console.log(json);
+          
+            const projects = json.body as ProjectProps[];
+            // return "D:"
+
+            return projects.map(project=> {
+                return {
+                    ...project,
+                    "imageLink": `${process.env.S3_BUCKET_URL!}${project.imageLink}`
+                }
+            });
         }
     )
     .catch(
-        err=>console.log(err)
+        err=>err
     );
 }
 
@@ -39,7 +51,7 @@ export async function uploadProject(project: BaseProject, imageFile: File): Prom
         method: "POST",
         body: JSON.stringify({
             "Action": "Add",
-            "Name": project.name,
+            "Name": project.Name,
             "author": project.author,
             "description": project.description,
             "imageLink": imageLink,
@@ -82,4 +94,35 @@ export async function uploadImage(file: File)
 
         return photo;
     })
+}
+
+const s3 = new S3Client({
+    region: "us-east-2",
+    credentials: 
+    {
+        accessKeyId: process.env.GALLERY_ACCESS_KEY_ID!,
+        secretAccessKey: process.env.GALLERY_ACCESS_KEY!
+    }
+});
+
+export async function fetchGalleryImages()
+{
+    const listCommand = new ListObjectsCommand({
+        Bucket: process.env.GALLERY_BUCKET,
+    })
+
+    try{
+
+        const output = (await s3.send(listCommand))
+        .Contents?.map(
+            content=>`https://${process.env.GALLERY_BUCKET}.s3.us-east-2.amazonaws.com/${content.Key}`
+        );
+    
+        return output;
+    }
+    catch
+    {
+        throw new Error("Couldn't fetch Gallery images! Please try again later.");
+    }
+    
 }

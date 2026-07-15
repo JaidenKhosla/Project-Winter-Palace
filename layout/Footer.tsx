@@ -7,7 +7,7 @@ type IconType = ForwardRefExoticComponent<BoxIconProps & RefAttributes<SVGSVGEle
 export default function Footer()
 {
     return (
-        <div className="w-full bg-header h-120 p-5 mt-5 max-md:flex max-md:flex-col max-md:text-center max-md:items-center">
+        <div className="w-full bg-header h-full p-5 mt-5 max-md:flex max-md:flex-col max-md:text-center max-md:items-center">
             <h1 className="underline text-4xl">James E. Taylor Computer Science Club</h1>
             <div className="flex">
                 <div>

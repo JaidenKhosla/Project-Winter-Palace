@@ -45,3 +45,6 @@ next-env.d.ts
 .amplify
 amplify_outputs*
 amplifyconfiguration*
+
+/backend/CoverImageUpload/node_modules
+/backend/ProjectUpload/node_modules

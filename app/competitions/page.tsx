@@ -1,6 +1,6 @@
+import Project from "@/util/Project";
 import Scroll from "@/util/Scroll";
 import Image from "next/image";
-import Project from "@/util/Project";
 
 export default function Competitions()
 {
@@ -9,11 +9,11 @@ export default function Competitions()
             <Scroll className="flex flex-col text-center items-center max-md:flex-col-reverse">
                 <div className="flex flex-col items-center">
                     <h1 className="shadow_class text-6xl">Competitions</h1>
-                    <p className="w-180 max-md:w-100 text-lg">Competitions test your problem solving skills and algorithmic thinking! Competitive Programming is a great way to gain valueable experience for CS.</p>
+                    <p className="w-180 max-md:w-100 text-lg">Competitions test your problem solving skills and algorithmic thinking! Competitive Programming is a great way to gain valuable experience for CS.</p>
                 </div>
 
                 <div className="text-center flex flex-col items-center">
-                    <Image src="/assets/Cat.JPG" className="w-100 mt-10" alt="CAT D:" width={300} height={400}/>
+                    <Image placeholder="blur" blurDataURL="/assets/placeholder.webp" unoptimized src="/assets/competitionResources/codewarsImage.png" className="w-100 mt-10" alt="CAT D:" width={300} height={400}/>
                     <p className="text-lg italic text-shdn">Us at HPE CodeWars :D</p>
                 </div>
             </Scroll>
@@ -34,7 +34,7 @@ export default function Competitions()
                     </div>
 
                     <div className="w-100 mr-25 max-md:mr-0">
-                        <Image src="/assets/competitionResources/StackingXorkins.png" width={700} height={800} alt="Xorkins Problem" className="w-full"/>
+                        <Image placeholder="blur" blurDataURL="/assets/placeholder.webp" unoptimized src="/assets/competitionResources/StackingXorkins.png" width={700} height={800} alt="Xorkins Problem" className="w-full"/>
                         <p className="w-100 italic text-shdn">Stacking Xorkins, an extremely difficult problem from the 2025 THS Halloween Competition.</p>
                     </div>
                 </Scroll>
@@ -49,12 +49,12 @@ export default function Competitions()
                     </div>
 
                     <div className="w-100 mr-25">
-                        <Image src="/assets/competitionResources/UIL2007.png" width={700} height={800} alt="Xorkins Problem" className="w-full"/>
+                        <Image placeholder="blur" blurDataURL="/assets/placeholder.webp" unoptimized src="/assets/competitionResources/UIL2007.png" width={700} height={800} alt="Xorkins Problem" className="w-full"/>
                         <p className="w-100 italic text-shdn">Page from UIL Invitational A, 2007</p>
                     </div>
                 </section>
 
-                <section className="mt-10">
+                <Scroll className="mt-10">
                     <h1 className="text-6xl shadow_class text-center underline">Study Resources</h1>
                                 
                     <h2 className="text-6xl shadow_class text-center my-5">Learning Java</h2>
@@ -62,7 +62,7 @@ export default function Competitions()
                         
                         <Project project={
                             {
-                                name: "Code Academy - Java Courses",
+                                Name: "Code Academy - Java Courses",
                                 author: "Code Academy",
                                 projectLink: "https://www.codecademy.com/learn/learn-java",
                                 imageLink: "/assets/competitionResources/codeAcademyJava.png",
@@ -71,7 +71,7 @@ export default function Competitions()
                         }/>
                         <Project project={
                             {
-                                name: "Java Full Course",
+                                Name: "Java Full Course",
                                 author: "BroCode",
                                 projectLink: "https://www.codecademy.com/learn/learn-java",
                                 imageLink: "/assets/competitionResources/BroCode.jpg",
@@ -85,7 +85,7 @@ export default function Competitions()
                         
                         <Project project={
                             {
-                                name: "USACO Guide",
+                                Name: "USACO Guide",
                                 author: "usacoguide",
                                 projectLink: "https://usaco.guide/dashboard",
                                 imageLink: "/assets/competitionResources/usacoGuide.png",
@@ -94,7 +94,7 @@ export default function Competitions()
                         }/>
                         <Project project={
                             {
-                                name: "Competitive Programmer's Handbook",
+                                Name: "Competitive Programmer's Handbook",
                                 author: "Antti Laaksonen",
                                 projectLink: "https://cses.fi/book/book.pdf",
                                 imageLink: "/assets/competitionResources/CompHandbook.png",
@@ -103,11 +103,11 @@ export default function Competitions()
                         }/>
                         <Project project={
                             {
-                                name: "Competitive Programming Algorithms",
+                                Name: "Competitive Programming Algorithms",
                                 author: "Open Source Community",
                                 projectLink: "https://cp-algorithms.com/",
                                 imageLink: "/assets/competitionResources/compAlgo.png",
-                                description: "Open source project that translate the russian programming website, E-Maxx. Has a numerous amount of articles going over competitive programming topics in grave detail."
+                                description: "Open source project that translates the Russian programming website, E-Maxx. Has a numerous amount of articles going over competitive programming topics in grave detail."
                             }
                         }/>
                     </div>
@@ -117,7 +117,7 @@ export default function Competitions()
                         
                         <Project project={
                             {
-                                name: "UIL Legends",
+                                Name: "UIL Legends",
                                 author: "Andrew Yoon",
                                 projectLink: "https://uil-legends-api.onrender.com/",
                                 imageLink: "/assets/competitionResources/uilLegends.png",
@@ -126,7 +126,7 @@ export default function Competitions()
                         }/>
                         <Project project={
                             {
-                                name: "UIL-DL",
+                                Name: "UIL-DL",
                                 author: "Shubh Randeria",
                                 projectLink: "https://uildl.randeria.dev/",
                                 imageLink: "/assets/competitionResources/uildl.png",
@@ -143,7 +143,7 @@ export default function Competitions()
                             }
                         }/> */}
                     </div>
-                </section>
+                </Scroll>
             </div>
         </div>
     )

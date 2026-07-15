@@ -34,13 +34,13 @@ export default function Navbar()
                 {/* <NavBTN text="CSHS" route="cshs" unset={()=>setMenu(false)}/> */}
                 <NavBTN text="Gallery" route="gallery" unset={()=>setMenu(false)}/>
                 <NavBTN text="Officers" route="officers" unset={()=>setMenu(false)}/>
-                <NavBTN text="Resources" route="resources" unset={()=>setMenu(false)}/>
+                <NavBTN text="Resources" route="competitions" unset={()=>setMenu(false)}/>
                 <NavBTN text="Projects" route="projects" unset={()=>setMenu(false)}/>
             </div>
             
-            <div className="hidden max-md:flex justify-end" onClick={()=>setMenu(prev=>!prev)}>
+            <div className="hidden max-md:flex justify-end pr" onClick={()=>setMenu(prev=>!prev)}>
                 {
-                    !useMenu && <Menu size="xl"/> || <X size="xl"/>
+                    !useMenu && <Menu size="lg"/> || <X size="lg"/>
                 }
             </div>
             
@@ -55,7 +55,7 @@ function NavBTN({ text, route, unset } : {text: string, route: string, unset?: (
     const path = usePathname().toLowerCase().split("/");
 
     return (
-        <Link className={clsx("text-white text-2xl pl-4 pr-8 pt-1 rounded-tl-xl h-[75%] hover:bg-hover transition-colors max-md:w-full max-md:p-0 max-md:h-25 max-md:flex max-md:justify-center max-md:items-center max-md:rounded-none", path[1] === (route.toLowerCase()) && "bg-background")}
+        <Link className={clsx("text-white text-xl pl-4 pr-8 pt-1 rounded-tl-xl h-[75%] hover:bg-hover transition-colors max-md:text-5xl max-md:w-full max-md:p-0 max-md:h-25 max-md:flex max-md:justify-center max-md:items-center max-md:rounded-none", path[1] === (route.toLowerCase()) && "bg-background")}
             onClick={unset}
             href={`/${(route)}`}
         >

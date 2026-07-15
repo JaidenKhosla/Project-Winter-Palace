@@ -1,0 +1,49 @@
+name: Deploy Lambda Backend
+
+on:
+  push:
+    branches: [main, actions]
+    paths:
+      - 'backend/**'
+  workflow_dispatch: 
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy-ts:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        function:
+          - { name: DynamoDBReciever, path: backend/ProjectUpload/index.ts }
+          - { name: THSProjectUpload, path: backend/CoverImageUpload/index.ts }
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with: 
+          node-version: 'latest'
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+          aws-region: us-east-2
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Bundle ${{ matrix.function.name }}
+        run: npx esbuild ${{ matrix.function.path }} --bundle --minify --platform=node --target=node20 --outfile=dist/index.js
+
+      - name: Zip ${{ matrix.function.name }}
+        run: cd dist && zip -r ../function.zip .
+
+      - name: Deploy ${{ matrix.function.name }}
+        run: aws lambda update-function-code --function-name ${{ matrix.function.name }} --zip-file fileb://function.zip

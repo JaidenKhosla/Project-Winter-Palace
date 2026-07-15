@@ -20,7 +20,7 @@ export default function Question({ question, answer }: QuestionProps)
                 <CaretDown size="md" className={clsx("transition-transform", useToggle && "rotate-180")}/>
             </div>
             <div className={clsx("border border-t-0 border-white transition-[height] overflow-hidden h-0 opacity-0 w-full", useToggle && "h-50 p-3 opacity-100")}>
-                {answer}
+                <p className="text-2xl">{answer}</p>
             </div>
         </div>
     )
