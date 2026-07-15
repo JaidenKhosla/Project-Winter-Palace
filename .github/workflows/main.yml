@@ -34,6 +34,9 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Install dependencies
+        run: npm install
+
       - name: Bundle ${{ matrix.function.name }}
         run: npx esbuild ${{ matrix.function.path }} --bundle --minify --platform=node --target=node20 --outfile=dist/index.js
 
